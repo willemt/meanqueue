@@ -64,7 +64,6 @@ void meanqueue_offer(
     qu->valSum -= qu->vals[qu->idxCur];
     qu->vals[qu->idxCur] = val;
     qu->idxCur++;
-    qu->mean = (float) qu->valSum / qu->size;
     if (qu->idxCur >= qu->size)
         qu->idxCur = 0;
 }
@@ -73,5 +72,6 @@ float meanqueue_get_value(
     meanqueue_t * qu
 )
 {
+    qu->mean = (float) qu->valSum / qu->size;
     return qu->mean;
 }
